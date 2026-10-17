@@ -45,64 +45,64 @@ export default function Dashboard() {
   return (
     <main className="space-y-6 py-4">
       <header>
-        <h1 className="text-2xl font-bold text-green-700">My December Plan</h1>
-        <p className="text-sm text-gray-600">
+        <h1 className="text-2xl font-bold text-text">My December Plan</h1>
+        <p className="text-sm text-gray-300">
           A quick look at where things stand.
         </p>
       </header>
 
       {/* Budget health */}
       {hasBudget ? (
-        <section className="rounded-2xl bg-white p-4 shadow-sm">
-          <h2 className="mb-3 text-base font-semibold text-gray-900">
+        <section className="rounded-2xl bg-surface p-4 shadow-sm">
+          <h2 className="mb-3 text-base font-semibold text-text">
             Budget Health
           </h2>
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Total Budget</span>
-              <span className="font-bold text-gray-900">
+              <span className="text-gray-300">Total Budget</span>
+              <span className="font-bold text-text">
                 {fmt(totalBudget)}
               </span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Total Paid</span>
-              <span className="font-bold text-gray-900">{fmt(totalPaid)}</span>
+              <span className="text-gray-300">Total Paid</span>
+              <span className="font-bold text-text">{fmt(totalPaid)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Remaining</span>
+              <span className="text-gray-300">Remaining</span>
               <span
                 className={`font-bold ${
-                  remaining < 0 ? 'text-festive-500' : 'text-green-700'
+                  remaining < 0 ? 'text-secondary' : 'text-primary'
                 }`}
               >
                 {fmt(remaining)}
               </span>
             </div>
-            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-100">
+            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-300">
               <div
-                className="h-full rounded-full bg-green-600"
+                className="h-full rounded-full bg-primary"
                 style={{ width: `${budgetProgress}%` }}
               />
             </div>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-400">
               {Math.round(budgetProgress)}% of budget actually spent
             </p>
           </div>
           <Link
             to="/budget"
-            className="mt-3 block text-center text-sm font-medium text-green-600"
+            className="mt-3 block text-center text-sm font-medium text-primary"
           >
             View full budget
           </Link>
         </section>
       ) : (
-        <section className="rounded-2xl bg-white p-4 text-center shadow-sm">
-          <p className="mb-3 text-sm text-gray-600">
+        <section className="rounded-2xl bg-surface p-4 text-center shadow-sm">
+          <p className="mb-3 text-sm text-gray-300">
             You haven't set up a budget yet.
           </p>
           <Link
             to="/budget"
-            className="inline-block rounded-xl bg-green-600 px-4 py-2 text-sm font-semibold text-white"
+            className="inline-block rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-text"
           >
             Set up budget
           </Link>
@@ -111,58 +111,58 @@ export default function Dashboard() {
 
       {/* Food progress */}
       {hasFood ? (
-        <section className="rounded-2xl bg-white p-4 shadow-sm">
-          <h2 className="mb-2 text-base font-semibold text-gray-900">
+        <section className="rounded-2xl bg-surface p-4 shadow-sm">
+          <h2 className="mb-2 text-base font-semibold text-text">
             Christmas Meal
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-300">
             {purchasedCount} item
             {purchasedCount === 1 ? '' : 's'} purchased so far
           </p>
           <Link
             to="/food"
-            className="mt-3 inline-block rounded-xl border-2 border-green-600 px-4 py-2 text-sm font-semibold text-green-700"
+            className="mt-3 inline-block rounded-xl border-2 border-primary px-4 py-2 text-sm font-semibold text-primary"
           >
             View/Update Food List
           </Link>
         </section>
       ) : (
-        <section className="rounded-2xl bg-white p-4 text-center shadow-sm">
-          <p className="mb-3 text-sm text-gray-600">
+        <section className="rounded-2xl bg-surface p-4 text-center shadow-sm">
+          <p className="mb-3 text-sm text-gray-300">
             No Christmas meal plan yet.
           </p>
           <Link
             to="/food"
-            className="inline-block rounded-xl bg-green-600 px-4 py-2 text-sm font-semibold text-white"
+            className="inline-block rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-text"
           >
             Plan your Christmas meal
           </Link>
         </section>
       )}
 
-      <section className="rounded-2xl bg-white p-4 shadow-sm">
-        <h2 className="mb-2 text-base font-semibold text-gray-900">
+      <section className="rounded-2xl bg-surface p-4 shadow-sm">
+        <h2 className="mb-2 text-base font-semibold text-text">
           Privacy & data
         </h2>
-        <p className="mb-3 text-sm text-gray-600">
+        <p className="mb-3 text-sm text-gray-300">
           Your plan is stored only on this device. Clear it at any time.
         </p>
         <button
           type="button"
           onClick={handleClearData}
-          className="w-full rounded-xl border-2 border-festive-500 bg-white px-4 py-3 text-base font-semibold text-festive-600"
+          className="w-full rounded-xl border-2 border-secondary bg-surface px-4 py-3 text-base font-semibold text-secondary"
         >
           Clear All My Data
         </button>
         {cleared && (
-          <p className="mt-2 text-center text-sm font-medium text-green-600">
+          <p className="mt-2 text-center text-sm font-medium text-primary">
             Data cleared
           </p>
         )}
       </section>
 
       <section className="pt-4">
-        <Link to="/" className="text-sm font-medium text-green-600">
+        <Link to="/" className="text-sm font-medium text-primary">
           Back to home
         </Link>
       </section>

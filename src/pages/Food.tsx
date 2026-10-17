@@ -33,15 +33,15 @@ export default function Food() {
   return (
     <main className="space-y-6 py-4">
       <header className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-green-700">Christmas Food Planner</h1>
-        <Link to="/" className="text-sm font-medium text-green-600">
+        <h1 className="text-2xl font-bold text-text">Christmas Food Planner</h1>
+        <Link to="/" className="text-sm font-medium text-primary">
           Home
         </Link>
       </header>
 
-      <form onSubmit={handleGenerate} className="space-y-5 rounded-2xl bg-white p-4 shadow-sm">
+      <form onSubmit={handleGenerate} className="space-y-5 rounded-2xl bg-surface p-4 shadow-sm">
         <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
+          <label className="mb-2 block text-sm font-medium text-gray-300">
             Number of people eating
           </label>
           <input
@@ -50,34 +50,34 @@ export default function Food() {
             min={1}
             value={people}
             onChange={(e) => setPeople(Number(e.target.value) || 1)}
-            className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-base focus:border-green-600 focus:outline-none"
+            className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-base focus:border-primary focus:outline-none"
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
+          <label className="mb-2 block text-sm font-medium text-gray-300">
             Dishes to prepare
           </label>
           <div className="space-y-2">
             {DISHES.map((dish) => (
               <label
                 key={dish.key}
-                className="flex items-center gap-3 rounded-xl border border-gray-200 px-3 py-2.5"
+                className="flex items-center gap-3 rounded-xl border border-gray-300 px-3 py-2.5"
               >
                 <input
                   type="checkbox"
                   checked={selected.includes(dish.key)}
                   onChange={() => toggleDish(dish.key)}
-                  className="h-4 w-4 accent-green-600"
+                  className="h-4 w-4 accent-primary"
                 />
-                <span className="text-sm text-gray-800">{dish.name}</span>
+                <span className="text-sm text-gray-200">{dish.name}</span>
               </label>
             ))}
           </div>
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
+          <label className="mb-2 block text-sm font-medium text-gray-300">
             Target food budget (optional)
           </label>
           <input
@@ -86,15 +86,15 @@ export default function Food() {
             value={targetBudget}
             onChange={(e) => setTargetBudget(e.target.value)}
             placeholder="0"
-            className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-base focus:border-green-600 focus:outline-none"
+            className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-base focus:border-primary focus:outline-none"
           />
         </div>
 
-        {error && <p className="text-sm text-festive-600">{error}</p>}
+        {error && <p className="text-sm text-secondary">{error}</p>}
 
         <button
           type="submit"
-          className="w-full rounded-xl bg-green-600 px-4 py-3 text-base font-semibold text-white"
+          className="w-full rounded-xl bg-primary px-4 py-3 text-base font-semibold text-text"
         >
           Generate Shopping List
         </button>
@@ -102,7 +102,7 @@ export default function Food() {
 
       {showList && (
         <section className="space-y-4">
-          <div className="rounded-2xl border border-festive-500/30 bg-festive-50 px-4 py-3 text-sm text-festive-600">
+          <div className="rounded-2xl border border-secondary/30 bg-secondary/10 px-4 py-3 text-sm text-secondary">
             ⚠️ Prices are estimates based on average market rates. Please update them
             to match your local market.
           </div>
@@ -149,7 +149,7 @@ export default function Food() {
                   {items.map((it) => (
                     <li
                       key={it.id}
-                      className={`flex items-center gap-3 rounded-2xl bg-white p-4 shadow-sm ${
+                      className={`flex items-center gap-3 rounded-2xl bg-surface p-4 shadow-sm ${
                         it.purchased ? 'opacity-60' : ''
                       }`}
                     >
@@ -159,17 +159,17 @@ export default function Food() {
                         onChange={() =>
                           useDecemberStore.getState().togglePurchasedItem(it.id)
                         }
-                        className="h-4 w-4 accent-green-600"
+                        className="h-4 w-4 accent-primary"
                       />
                       <div className="min-w-0 flex-1">
                         <p
-                          className={`truncate font-medium text-gray-900 ${
+                          className={`truncate font-medium text-text ${
                             it.purchased ? 'line-through' : ''
                           }`}
                         >
                           {it.name}
                         </p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-300">
                           {it.dish} · {Number(it.qty.toFixed(2))} {it.unit}
                         </p>
                       </div>
@@ -187,36 +187,36 @@ export default function Food() {
                               },
                             })
                         }
-                        className="w-24 rounded-xl border border-gray-200 px-2 py-1.5 text-right text-sm focus:border-green-600 focus:outline-none"
+                        className="w-24 rounded-xl border border-gray-300 px-2 py-1.5 text-right text-sm focus:border-primary focus:outline-none"
                       />
                     </li>
                   ))}
                 </ul>
 
-                <div className="rounded-2xl bg-white p-4 shadow-sm">
+                <div className="rounded-2xl bg-surface p-4 shadow-sm">
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Total Estimated Cost</span>
-                    <span className="font-bold text-gray-900">{fmt(total)}</span>
+                    <span className="text-gray-300">Total Estimated Cost</span>
+                    <span className="font-bold text-text">{fmt(total)}</span>
                   </div>
                   <div className="mt-1 flex justify-between text-sm">
-                    <span className="text-gray-600">Cost Per Person</span>
-                    <span className="font-bold text-gray-900">
+                    <span className="text-gray-300">Cost Per Person</span>
+                    <span className="font-bold text-text">
                       {fmt(perPerson)}
                     </span>
                   </div>
                   {hasTarget && (
                     <div className="mt-3">
-                      <div className="flex justify-between text-xs text-gray-500">
+                      <div className="flex justify-between text-xs text-gray-300">
                         <span>
                           {under ? 'Under budget' : 'Over budget'} by{' '}
                           {fmt(Math.abs(target - total))}
                         </span>
                         <span>{Math.round(progress)}%</span>
                       </div>
-                      <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-gray-100">
+                      <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-gray-300">
                         <div
                           className={`h-full rounded-full ${
-                            under ? 'bg-green-600' : 'bg-festive-500'
+                            under ? 'bg-primary' : 'bg-secondary'
                           }`}
                           style={{ width: `${progress}%` }}
                         />
@@ -226,7 +226,7 @@ export default function Food() {
                 </div>
 
                 <section className="space-y-2">
-                  <h3 className="text-sm font-semibold text-gray-700">
+                  <h3 className="text-sm font-semibold text-gray-300">
                     Don't want to go to the market?
                   </h3>
                   <div className="flex flex-col gap-2">
@@ -234,7 +234,7 @@ export default function Food() {
                       href="https://chowdeck.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center rounded-xl border-2 border-green-600 bg-white px-4 py-3 text-base font-semibold text-green-700"
+                      className="flex items-center justify-center rounded-xl border-2 border-primary bg-surface px-4 py-3 text-base font-semibold text-primary"
                     >
                       Order Groceries on Chowdeck
                     </a>
@@ -242,7 +242,7 @@ export default function Food() {
                       href="https://glovoapp.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center rounded-xl border-2 border-festive-500 bg-white px-4 py-3 text-base font-semibold text-festive-600"
+                      className="flex items-center justify-center rounded-xl border-2 border-secondary bg-surface px-4 py-3 text-base font-semibold text-secondary"
                     >
                       Order on Glovo
                     </a>

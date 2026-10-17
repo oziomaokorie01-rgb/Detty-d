@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Budget from './pages/Budget'
 import Food from './pages/Food'
 import Dashboard from './pages/Dashboard'
+import Events from './pages/Events'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/budget" element={<Budget />} />
           <Route path="/food" element={<Food />} />
+          <Route path="/events" element={<Events />} />
         </Routes>
       </Layout>
     </BrowserRouter>
