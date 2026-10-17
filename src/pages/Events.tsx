@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Calendar, MapPin, Ticket } from 'lucide-react'
-import { eventsData } from '../data/eventsData'
+import { Calendar, MapPin, Ticket, ChevronLeft, ChevronRight } from 'lucide-react'
+import { eventsData, type Event } from '../data/eventsData'
 
 const CITIES = ['Lagos', 'Abuja', 'PH'] as const
 
@@ -62,48 +62,76 @@ export default function Events() {
           No events found in this city.
         </div>
       ) : (
-        <ul className="flex flex-col gap-3">
+        <ul className="flex flex-col gap-4">
           {filtered.map((event) => (
-            <li
-              key={event.id}
-              className="flex flex-col rounded-2xl bg-surface p-4 shadow-sm transition hover:shadow-md"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <h2 className="text-base font-bold text-text">{event.name}</h2>
-                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-                  <Ticket size={12} />
-                  Get Tickets
-                </span>
-              </div>
-
-              <p className="mt-1 flex items-center gap-2 text-sm text-gray-300">
-                <Calendar size={14} className="shrink-0" />
-                {event.date}
-              </p>
-              <p className="mt-1 flex items-center gap-2 text-sm text-gray-300">
-                <MapPin size={14} className="shrink-0" />
-                {event.venue}, {event.city}
-              </p>
-
-              <p className="mt-2 text-xs font-semibold text-gray-400">
-                {event.priceRange}
-              </p>
-
-              <p className="mt-2 text-sm text-gray-300">{event.description}</p>
-
-              <a
-                href={event.ticketUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-text transition hover:bg-primary/90 active:scale-[0.98]"
-              >
-                <Ticket size={16} />
-                Get Tickets
-              </a>
-            </li>
+            <EventCard key={event.id} event={event} />
           ))}
         </ul>
       )}
     </main>
+  )
+}
+
+function EventCard({ event }: { event: Event }) {
+  return (
+    <li className="flex flex-col rounded-2xl bg-surface p-4 shadow-sm transition hover:shadow-lg">
+      {/* Hero image with horizontal scroll */}
+      <div className="relative overflow-hidden rounded-xl">
+        <div className="flex gap-2 overflow-x-auto px-2 pb-2">
+          {event.images.map((img, i) => (
+            <div
+              key={i}
+              className="shrink-0 w-36 flex-shrink-0 overflow-hidden rounded-lg"
+            >
+              <img
+                src={img}
+                alt={`${event.name} — ${event.city} — ${i + 1}`}
+                className="h-24 w-full object-cover transition hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+        {/* Scroll hint (visible on hover) */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="flex gap-2 opacity-0 hover:opacity-100 transition-opacity">
+            <ChevronLeft size={20} className="text-white/60" />
+            <ChevronRight size={20} className="text-white/60" />
+          </div>
+        </div>
+      </div>
+
+      {/* Card content */}
+      <div className="mt-3 flex items-start justify-between gap-3">
+        <h2 className="text-base font-bold text-text">{event.name}</h2>
+        <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+          <Ticket size={12} />
+          Get Tickets
+        </span>
+      </div>
+
+      <p className="mt-1 flex items-center gap-2 text-sm text-gray-300">
+        <Calendar size={14} className="shrink-0" />
+        {event.date}
+      </p>
+      <p className="mt-1 flex items-center gap-2 text-sm text-gray-300">
+        <MapPin size={14} className="shrink-0" />
+        {event.venue}, {event.city}
+      </p>
+
+      <p className="mt-2 text-xs font-semibold text-gray-400">{event.priceRange}</p>
+
+      <p className="mt-2 text-sm text-gray-300">{event.description}</p>
+
+      <a
+        href={event.ticketUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-text transition hover:bg-primary/90 active:scale-[0.98]"
+      >
+        <Ticket size={16} />
+        Get Tickets
+      </a>
+    </li>
   )
 }
