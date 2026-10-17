@@ -5,10 +5,11 @@ export default {
     extend: {
       colors: {
         background: '#0a0a0a',
-        primary: '#8b5cf6',
-        secondary: '#dc2626',
+        primary: '#dc2626',
+        secondary: '#8b5cf6',
         surface: '#262626',
-        text: '#fafafa',
+        text: '#e5e5e5',
+        'text-muted': '#a3a3a3',
         gray: {
           300: '#d1d5db',
           400: '#9ca3af',

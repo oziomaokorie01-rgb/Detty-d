@@ -72,7 +72,7 @@ export default function Dashboard() {
               <span className="text-gray-300">Remaining</span>
               <span
                 className={`font-bold ${
-                  remaining < 0 ? 'text-secondary' : 'text-primary'
+                  remaining < 0 ? 'text-primary' : 'text-secondary'
                 }`}
               >
                 {fmt(remaining)}
@@ -150,7 +150,7 @@ export default function Dashboard() {
         <button
           type="button"
           onClick={handleClearData}
-          className="w-full rounded-xl border-2 border-secondary bg-surface px-4 py-3 text-base font-semibold text-secondary"
+          className="w-full rounded-xl border-2 border-primary bg-surface px-4 py-3 text-base font-semibold text-primary"
         >
           Clear All My Data
         </button>
