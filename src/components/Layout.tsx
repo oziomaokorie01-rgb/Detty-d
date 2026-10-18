@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Home, LayoutDashboard, Wallet, UtensilsCrossed, Ticket, Mail } from 'lucide-react'
+import { Home, LayoutDashboard, Wallet, UtensilsCrossed, Ticket } from 'lucide-react'
 
 const NAV = [
   { to: '/', label: 'Home', Icon: Home },
@@ -32,11 +32,20 @@ export function Layout({ children }: { children: ReactNode }) {
           </div>
           <div className="flex items-center gap-2">
             <a
-              href="mailto:hello@december.commandcenter.com"
+              href="https://github.com/oziomaokorie01-rgb"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-1.5 rounded-lg border border-gray-300 px-2.5 py-1 text-xs font-medium text-gray-300 transition hover:text-primary"
             >
-              <Mail size={13} />
-              <span className="hidden sm:inline">hello@commandcenter.com</span>
+              GitHub
+            </a>
+            <a
+              href="https://twitter.com/Senseii_ciel"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 rounded-lg border border-gray-300 px-2.5 py-1 text-xs font-medium text-gray-300 transition hover:text-primary"
+            >
+              Twitter
             </a>
           </div>
         </header>
