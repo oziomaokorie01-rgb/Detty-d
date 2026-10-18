@@ -21,7 +21,7 @@ export default function Home() {
       <section className="flex flex-col gap-3">
         <Link
           to="/budget"
-          className="flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-4 text-base font-semibold text-text shadow-sm transition active:scale-[0.98]"
+          className="primary-btn flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-4 text-base font-semibold text-text shadow-sm transition active:scale-[0.98]"
         >
           <Wallet size={18} />
           Plan My December

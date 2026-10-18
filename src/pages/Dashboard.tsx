@@ -90,7 +90,7 @@ export default function Dashboard() {
           </div>
           <Link
             to="/budget"
-            className="mt-3 block text-center text-sm font-medium text-primary"
+            className="primary-btn mt-3 block text-center text-sm font-medium text-text"
           >
             View full budget
           </Link>

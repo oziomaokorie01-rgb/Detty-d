@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Home, LayoutDashboard, Wallet, UtensilsCrossed, Ticket } from 'lucide-react'
+import { Home, LayoutDashboard, Wallet, UtensilsCrossed, Ticket, Mail } from 'lucide-react'
 
 const NAV = [
   { to: '/', label: 'Home', Icon: Home },
@@ -12,14 +12,35 @@ const NAV = [
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen w-full bg-background pb-20">
-      <div className="mx-auto w-full max-w-md px-5 py-6">
-        <header className="mb-6 flex items-center gap-2">
-          <span className="inline-block h-8 w-8 rounded-full bg-primary" />
-          <span className="text-sm font-semibold tracking-wide text-text">
-            December Command Center
-          </span>
+    <div className="min-h-screen w-full bg-background pb-24">
+      {/* Floating orbs — ambient background animation */}
+      <div className="orb-container fixed inset-0 z-0">
+        <div className="orb orb-1" />
+        <div className="orb orb-2" />
+        <div className="orb orb-3" />
+        <div className="orb orb-4" />
+        <div className="orb orb-5" />
+      </div>
+
+      <div className="mx-auto w-full px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-12">
+        <header className="mb-6 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="inline-block h-8 w-8 rounded-full bg-primary" />
+            <span className="text-sm font-semibold tracking-wide text-text">
+              December Command Center
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <a
+              href="mailto:hello@december.commandcenter.com"
+              className="flex items-center gap-1.5 rounded-lg border border-gray-300 px-2.5 py-1 text-xs font-medium text-gray-300 transition hover:text-primary"
+            >
+              <Mail size={13} />
+              <span className="hidden sm:inline">hello@commandcenter.com</span>
+            </a>
+          </div>
         </header>
+
         {children}
       </div>
 

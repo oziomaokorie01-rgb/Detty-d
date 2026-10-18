@@ -94,7 +94,7 @@ export default function Food() {
 
         <button
           type="submit"
-          className="w-full rounded-xl bg-primary px-4 py-3 text-base font-semibold text-text"
+          className="primary-btn w-full rounded-xl bg-primary px-4 py-3 text-base font-semibold text-text"
         >
           Generate Shopping List
         </button>

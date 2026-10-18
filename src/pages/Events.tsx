@@ -127,7 +127,7 @@ function EventCard({ event }: { event: Event }) {
         href={event.ticketUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-text transition hover:bg-primary/90 active:scale-[0.98]"
+        className="primary-btn flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-text transition hover:bg-primary/90 active:scale-[0.98]"
       >
         <Ticket size={16} />
         Get Tickets

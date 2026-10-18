@@ -139,7 +139,7 @@ export default function Budget() {
           <button
             type="button"
             onClick={handleSetBudget}
-            className="rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-text"
+            className="primary-btn rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-text"
           >
             Set
           </button>
